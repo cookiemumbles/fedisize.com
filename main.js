@@ -6,6 +6,36 @@ function main() {
   renderData(data)
 }
 
+/*
+
+getting stats:
+- https://api.joinmastodon.org/statistics
+    - server_count, user_count, active_user_count
+    - updated once a day
+- https://instances.social (through auth api)
+  - probably results like: https://instances.social/list/old
+  - no history, only current
+- https://techhub.social/@mastodonusercount@bitcoinhackers.org
+    - https://github.com/gallizoltan/usercount
+    - reads https://instances.social
+    - history through crawling toots
+    - only user count
+- https://simonwillison.net/2022/Nov/20/tracking-mastodon/
+    - uses https://instances.social/instances.json
+    - checks in git history: https://github.com/simonw/scrape-instances-social
+    - openRegistrations, users, statuses, connections
+- https://fediverse.observer/stats
+  - has big history, but does not appear to be callable through api
+  - could get data through website (hardcoded; probably page generated)
+      -> see data2.js
+
+Blocked servers:
+- https://joinfediverse.wiki/FediBlock
+- https://writer.oliphant.social/oliphant/blocklists
+  - https://codeberg.org/oliphant/blocklists/src/branch/main/blocklists/
+
+ */
+
 function renderData(rawData) {
   var data = []
   for (const entry of rawData) {
