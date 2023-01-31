@@ -1,0 +1,344 @@
+[
+  {
+    "date": "2019-01",
+    "user_growth": "83",
+    "user_growth_active": "0",
+    "pod_growth": "0",
+    "comment_growth": "94",
+    "posts_growth": "75"
+  },
+  {
+    "date": "2019-02",
+    "user_growth": "485",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "566",
+    "posts_growth": "457"
+  },
+  {
+    "date": "2019-03",
+    "user_growth": "700",
+    "user_growth_active": "0",
+    "pod_growth": "3",
+    "comment_growth": "995",
+    "posts_growth": "807"
+  },
+  {
+    "date": "2019-04",
+    "user_growth": "953",
+    "user_growth_active": "0",
+    "pod_growth": "3",
+    "comment_growth": "2259",
+    "posts_growth": "1962"
+  },
+  {
+    "date": "2019-05",
+    "user_growth": "1179",
+    "user_growth_active": "0",
+    "pod_growth": "3",
+    "comment_growth": "3508",
+    "posts_growth": "3215"
+  },
+  {
+    "date": "2019-06",
+    "user_growth": "0",
+    "user_growth_active": "0",
+    "pod_growth": "0",
+    "comment_growth": "0",
+    "posts_growth": "0"
+  },
+  {
+    "date": "2019-07",
+    "user_growth": "9",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "14",
+    "posts_growth": "11"
+  },
+  {
+    "date": "2019-08",
+    "user_growth": "39",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "25",
+    "posts_growth": "26"
+  },
+  {
+    "date": "2019-09",
+    "user_growth": "14",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "6",
+    "posts_growth": "15"
+  },
+  {
+    "date": "2019-10",
+    "user_growth": "21",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "0",
+    "posts_growth": "202"
+  },
+  {
+    "date": "2019-11",
+    "user_growth": "14",
+    "user_growth_active": "0",
+    "pod_growth": "1",
+    "comment_growth": "2",
+    "posts_growth": "105"
+  },
+  {
+    "date": "2019-12",
+    "user_growth": "1623",
+    "user_growth_active": "0",
+    "pod_growth": "2",
+    "comment_growth": "10076",
+    "posts_growth": "6122"
+  },
+  {
+    "date": "2020-01",
+    "user_growth": "2469",
+    "user_growth_active": "0",
+    "pod_growth": "2",
+    "comment_growth": "15234",
+    "posts_growth": "9191"
+  },
+  {
+    "date": "2020-02",
+    "user_growth": "10324",
+    "user_growth_active": "0",
+    "pod_growth": "4",
+    "comment_growth": "41661",
+    "posts_growth": "27206"
+  },
+  {
+    "date": "2020-03",
+    "user_growth": "12020",
+    "user_growth_active": "0",
+    "pod_growth": "7",
+    "comment_growth": "50607",
+    "posts_growth": "34894"
+  },
+  {
+    "date": "2020-04",
+    "user_growth": "11046",
+    "user_growth_active": "0",
+    "pod_growth": "8",
+    "comment_growth": "49802",
+    "posts_growth": "34815"
+  },
+  {
+    "date": "2020-05",
+    "user_growth": "11846",
+    "user_growth_active": "0",
+    "pod_growth": "10",
+    "comment_growth": "56561",
+    "posts_growth": "39973"
+  },
+  {
+    "date": "2020-06",
+    "user_growth": "13236",
+    "user_growth_active": "0",
+    "pod_growth": "12",
+    "comment_growth": "66470",
+    "posts_growth": "45322"
+  },
+  {
+    "date": "2020-07",
+    "user_growth": "13901",
+    "user_growth_active": "0",
+    "pod_growth": "16",
+    "comment_growth": "70759",
+    "posts_growth": "50771"
+  },
+  {
+    "date": "2020-08",
+    "user_growth": "14644",
+    "user_growth_active": "0",
+    "pod_growth": "16",
+    "comment_growth": "78027",
+    "posts_growth": "65299"
+  },
+  {
+    "date": "2020-09",
+    "user_growth": "14864",
+    "user_growth_active": "0",
+    "pod_growth": "16",
+    "comment_growth": "82202",
+    "posts_growth": "70575"
+  },
+  {
+    "date": "2020-10",
+    "user_growth": "15863",
+    "user_growth_active": "0",
+    "pod_growth": "17",
+    "comment_growth": "89840",
+    "posts_growth": "76491"
+  },
+  {
+    "date": "2020-11",
+    "user_growth": "16857",
+    "user_growth_active": "0",
+    "pod_growth": "20",
+    "comment_growth": "96907",
+    "posts_growth": "81606"
+  },
+  {
+    "date": "2020-12",
+    "user_growth": "17932",
+    "user_growth_active": "0",
+    "pod_growth": "20",
+    "comment_growth": "103607",
+    "posts_growth": "86584"
+  },
+  {
+    "date": "2021-01",
+    "user_growth": "20260",
+    "user_growth_active": "0",
+    "pod_growth": "25",
+    "comment_growth": "112020",
+    "posts_growth": "93296"
+  },
+  {
+    "date": "2021-02",
+    "user_growth": "21276",
+    "user_growth_active": "0",
+    "pod_growth": "30",
+    "comment_growth": "116149",
+    "posts_growth": "98672"
+  },
+  {
+    "date": "2021-03",
+    "user_growth": "23797",
+    "user_growth_active": "0",
+    "pod_growth": "31",
+    "comment_growth": "129474",
+    "posts_growth": "107333"
+  },
+  {
+    "date": "2021-04",
+    "user_growth": "24411",
+    "user_growth_active": "0",
+    "pod_growth": "33",
+    "comment_growth": "136138",
+    "posts_growth": "110485"
+  },
+  {
+    "date": "2021-05",
+    "user_growth": "26981",
+    "user_growth_active": "0",
+    "pod_growth": "35",
+    "comment_growth": "148489",
+    "posts_growth": "97496"
+  },
+  {
+    "date": "2021-06",
+    "user_growth": "32700",
+    "user_growth_active": "0",
+    "pod_growth": "42",
+    "comment_growth": "202337",
+    "posts_growth": "111783"
+  },
+  {
+    "date": "2021-07",
+    "user_growth": "35412",
+    "user_growth_active": "0",
+    "pod_growth": "49",
+    "comment_growth": "273665",
+    "posts_growth": "147015"
+  },
+  {
+    "date": "2021-08",
+    "user_growth": "37002",
+    "user_growth_active": "0",
+    "pod_growth": "52",
+    "comment_growth": "317207",
+    "posts_growth": "162940"
+  },
+  {
+    "date": "2021-09",
+    "user_growth": "34296",
+    "user_growth_active": "0",
+    "pod_growth": "53",
+    "comment_growth": "345379",
+    "posts_growth": "172152"
+  },
+  {
+    "date": "2021-10",
+    "user_growth": "32475",
+    "user_growth_active": "0",
+    "pod_growth": "58",
+    "comment_growth": "384458",
+    "posts_growth": "178842"
+  },
+  {
+    "date": "2021-11",
+    "user_growth": "34603",
+    "user_growth_active": "0",
+    "pod_growth": "63",
+    "comment_growth": "450233",
+    "posts_growth": "193518"
+  },
+  {
+    "date": "2021-12",
+    "user_growth": "36586",
+    "user_growth_active": "0",
+    "pod_growth": "69",
+    "comment_growth": "486200",
+    "posts_growth": "197059"
+  },
+  {
+    "date": "2022-01",
+    "user_growth": "38047",
+    "user_growth_active": "875",
+    "pod_growth": "74",
+    "comment_growth": "518169",
+    "posts_growth": "208996"
+  },
+  {
+    "date": "2022-02",
+    "user_growth": "39266",
+    "user_growth_active": "4059",
+    "pod_growth": "80",
+    "comment_growth": "544023",
+    "posts_growth": "208107"
+  },
+  {
+    "date": "2022-03",
+    "user_growth": "39950",
+    "user_growth_active": "3894",
+    "pod_growth": "84",
+    "comment_growth": "556049",
+    "posts_growth": "229172"
+  },
+  {
+    "date": "2022-04"
+  },
+  {
+    "date": "2022-05"
+  },
+  {
+    "date": "2022-06"
+  },
+  {
+    "date": "2022-07"
+  },
+  {
+    "date": "2022-08"
+  },
+  {
+    "date": "2022-09"
+  },
+  {
+    "date": "2022-10"
+  },
+  {
+    "date": "2022-11"
+  },
+  {
+    "date": "2022-12"
+  },
+  {
+    "date": "2023-01"
+  }
+]

@@ -1,9 +1,11 @@
 import {data} from './data.js';
+import { dataMastodon } from './data2.js';
 
 function main() {
 
-  console.log(data);
-  renderData(data)
+
+  console.log(dataMastodon);
+  renderData(dataMastodon)
 }
 
 /*
@@ -24,7 +26,7 @@ getting stats:
     - uses https://instances.social/instances.json
     - checks in git history: https://github.com/simonw/scrape-instances-social
     - openRegistrations, users, statuses, connections
-- https://fediverse.observer/stats
+- https://fediverse.observer/stats (https://gitlab.com/diasporg/poduptime/)
   - has big history, but does not appear to be callable through api
   - could get data through website (hardcoded; probably page generated)
       -> see data2.js
@@ -39,7 +41,7 @@ Blocked servers:
 function renderData(rawData) {
   var data = []
   for (const entry of rawData) {
-    data.push({x:entry.period, y:entry.user_count})
+    data.push({x:entry.date, y:entry.user_growth})
   }
 
   // console.log(JSON.stringify(data))
