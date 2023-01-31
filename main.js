@@ -8,56 +8,48 @@ function main() {
 
 function renderData(rawData) {
   var data = []
-  // for (const entry of rawData) {
-  //   data.push({x:entry.date, y:entry.follower_count})
-  // }
+  for (const entry of rawData) {
+    data.push({x:entry.period, y:entry.user_count})
+  }
 
   // console.log(JSON.stringify(data))
 
+  const chartDiv = document.getElementById('myChart')
 
-  if (!chart) {
-    chart = new Chart(document.getElementById('myChart'), {
-      type: 'line',
-      data: {
-        datasets: [{
-          label: 'Followers',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: data
-        }]
-      },
-      options: {
-        plugins: {
-          tooltip: {
-            callbacks: {
-              footer: function (tooltipItems) {
-                var tooltipItem = tooltipItems[0]
-                var currentY = tooltipItem.parsed.y
+  var chart = new Chart(chartDiv, {
+    type: 'line',
+    data: {
+      datasets: [{
+        label: 'Followers',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: data
+      }]
+    },
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            footer: function (tooltipItems) {
+              var tooltipItem = tooltipItems[0]
+              var currentY = tooltipItem.parsed.y
 
-                var previousY = (tooltipItem.dataIndex >= 1)
-                  ? tooltipItem.dataset.data[tooltipItem.dataIndex - 1].y
-                  : 0;
-                var diff = currentY - previousY
-                if (diff >= 0) {
-                  var diffStr = "+ " + diff
-                } else {
-                  var diffStr = " " + diff
-                }
-                return "diff: " + diffStr
-              },
-            }
+              var previousY = (tooltipItem.dataIndex >= 1)
+                ? tooltipItem.dataset.data[tooltipItem.dataIndex - 1].y
+                : 0;
+              var diff = currentY - previousY
+              if (diff >= 0) {
+                var diffStr = "+ " + diff
+              } else {
+                var diffStr = " " + diff
+              }
+              return "diff: " + diffStr
+            },
           }
         }
       }
-    });
-  } else {
-    chart.data.datasets = [{
-          label: 'Followers',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
-          data: data
-        }]
-  }
+    }
+  });
   chart.update();
 }
 
