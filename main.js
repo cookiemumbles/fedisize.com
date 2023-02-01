@@ -3,9 +3,27 @@ import { dataMastodon } from './data2.js';
 
 function main() {
 
+  //usage:
+  readTextFile("combined.json", function(text){
+    var data = JSON.parse(text);
+    console.log(data);
+    renderData(data)
+  });
 
-  console.log(dataMastodon);
-  renderData(dataMastodon)
+  // console.log(dataMastodon);
+  // renderData(dataMastodon)
+}
+
+function readTextFile(file, callback) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.overrideMimeType("application/json");
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function() {
+    if (rawFile.readyState === 4 && rawFile.status == "200") {
+      callback(rawFile.responseText);
+    }
+  }
+  rawFile.send(null);
 }
 
 /*
@@ -36,47 +54,55 @@ Blocked servers:
 - https://writer.oliphant.social/oliphant/blocklists
   - https://codeberg.org/oliphant/blocklists/src/branch/main/blocklists/
 
- */
+*/
 
 function renderData(rawData) {
-  var data = []
-  for (const entry of rawData) {
-    data.push({x:entry.date, y:entry.user_growth})
-  }
-
-  // console.log(JSON.stringify(data))
+  var dataSets = []
+  rawData
+  .filter((entryObj) => {
+    return entryObj.name != "all"
+  })
+    .sort(function(a, b){
+      var result = a.values[a.values.length -1].user_growth - b.values[b.values.length -1].user_growth
+      console.log(`${a.name} > ${b.name}: ${a.values[a.values.length -1]} - ${b.values[b.values.length -1]}`, b.values[b.values.length - 1])
+      if (result) {
+        console.log("result:", result)
+        return result
+      } else {
+        return 0
+      }
+    })
+    .forEach((entryObj) => {
+      dataSets.push({
+        label: entryObj.name,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: entryObj.values.map((entry) => {
+          return {x:entry.date, y:entry.user_growth}
+        })
+      })
+  })
 
   const chartDiv = document.getElementById('myChart')
 
   var chart = new Chart(chartDiv, {
     type: 'line',
     data: {
-      datasets: [{
-        label: 'Followers',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: data
-      }]
+      datasets: dataSets
     },
     options: {
-      plugins: {
-        tooltip: {
-          callbacks: {
-            footer: function (tooltipItems) {
-              var tooltipItem = tooltipItems[0]
-              var currentY = tooltipItem.parsed.y
-
-              var previousY = (tooltipItem.dataIndex >= 1)
-                ? tooltipItem.dataset.data[tooltipItem.dataIndex - 1].y
-                : 0;
-              var diff = currentY - previousY
-              if (diff >= 0) {
-                var diffStr = "+ " + diff
-              } else {
-                var diffStr = " " + diff
-              }
-              return "diff: " + diffStr
-            },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Month'
+          }
+        },
+        y: {
+          stacked: true,
+          title: {
+            display: true,
+            text: 'Value'
           }
         }
       }
