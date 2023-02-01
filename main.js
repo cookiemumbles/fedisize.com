@@ -1,31 +1,3 @@
-import {data} from './data.js';
-import { dataMastodon } from './data2.js';
-
-function main() {
-
-  //usage:
-  readTextFile("combined.json", function(text){
-    var data = JSON.parse(text);
-    console.log(data);
-    renderData(data)
-  });
-
-  // console.log(dataMastodon);
-  // renderData(dataMastodon)
-}
-
-function readTextFile(file, callback) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.overrideMimeType("application/json");
-  rawFile.open("GET", file, true);
-  rawFile.onreadystatechange = function() {
-    if (rawFile.readyState === 4 && rawFile.status == "200") {
-      callback(rawFile.responseText);
-    }
-  }
-  rawFile.send(null);
-}
-
 /*
 
 getting stats:
@@ -56,27 +28,56 @@ Blocked servers:
 
 */
 
+function main() {
+
+  //usage:
+  readTextFile("combined.json", function(text){
+    var data = JSON.parse(text);
+    console.log(data);
+    renderData(data)
+  });
+
+  // console.log(dataMastodon);
+  // renderData(dataMastodon)
+}
+
+function readTextFile(file, callback) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.overrideMimeType("application/json");
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function() {
+    if (rawFile.readyState === 4 && rawFile.status == "200") {
+      callback(rawFile.responseText);
+    }
+  }
+  rawFile.send(null);
+}
+
 function renderData(rawData) {
   var dataSets = []
   rawData
-  .filter((entryObj) => {
-    return entryObj.name != "all"
-  })
+    .filter((entryObj) => {
+      // return entryObj.name == "diaspora"
+      return entryObj.name != "all"
+    })
     .sort(function(a, b){
-      var result = a.values[a.values.length -1].user_growth - b.values[b.values.length -1].user_growth
-      console.log(`${a.name} > ${b.name}: ${a.values[a.values.length -1]} - ${b.values[b.values.length -1]}`, b.values[b.values.length - 1])
+      let lastGrowthA = a.values[a.values.length -1].user_growth
+      let lastGrowthB = b.values[b.values.length -1].user_growth
+      var result = lastGrowthA - lastGrowthB 
       if (result) {
-        console.log("result:", result)
         return result
       } else {
-        return 0
+        return -1
       }
     })
-    .forEach((entryObj) => {
+    .forEach((entryObj, i) => {
+      const color = '#' + Math.floor(Math.random()*16777215).toString(16)
       dataSets.push({
         label: entryObj.name,
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        // backgroundColor: 'rgb(255, 99, 132)',
+        backgroundColor: color,
+        borderColor: color,
+        fill: true,
         data: entryObj.values.map((entry) => {
           return {x:entry.date, y:entry.user_growth}
         })
@@ -91,11 +92,16 @@ function renderData(rawData) {
       datasets: dataSets
     },
     options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
       scales: {
         x: {
           title: {
             display: true,
-            text: 'Month'
+            text: 'Time'
           }
         },
         y: {
