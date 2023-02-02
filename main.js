@@ -28,34 +28,29 @@ Blocked servers:
 
 */
 
+const colors = {
+  "mastodon": "rgb(99, 100, 255)",
+  "diaspora": "rgb(34, 34, 34)"
+}
+
+let _currentData = []
+let _chart = null
+
 function main() {
 
   //usage:
   readTextFile("combined.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
-    renderData(data)
+    renderData(preproccessData(data))
   });
 
   // console.log(dataMastodon);
   // renderData(dataMastodon)
 }
 
-function readTextFile(file, callback) {
-  var rawFile = new XMLHttpRequest();
-  rawFile.overrideMimeType("application/json");
-  rawFile.open("GET", file, true);
-  rawFile.onreadystatechange = function() {
-    if (rawFile.readyState === 4 && rawFile.status == "200") {
-      callback(rawFile.responseText);
-    }
-  }
-  rawFile.send(null);
-}
-
-function renderData(rawData) {
-  var dataSets = []
-  rawData
+function preproccessData(rawData) {
+  return rawData
     .filter((entryObj) => {
       // return entryObj.name == "diaspora"
       return entryObj.name != "all"
@@ -70,26 +65,38 @@ function renderData(rawData) {
         return -1
       }
     })
-    .forEach((entryObj, i) => {
-      const color = '#' + Math.floor(Math.random()*16777215).toString(16)
-      dataSets.push({
-        label: entryObj.name,
-        // backgroundColor: 'rgb(255, 99, 132)',
-        backgroundColor: color,
-        borderColor: color,
-        fill: true,
-        data: entryObj.values.map((entry) => {
-          return {x:entry.date, y:entry.user_growth}
-        })
-      })
-  })
+}
 
+function getColor(name) {
+  if (name in colors) {
+    return colors[name]
+  } else {
+    return '#' + Math.floor(Math.random()*16777215).toString(16)
+  }
+}
+
+function renderData(graphData) {
+  _currentData = graphData
+  
   const chartDiv = document.getElementById('myChart')
 
-  var chart = new Chart(chartDiv, {
+  if (!_chart) {
+  _chart = new Chart(chartDiv, {
     type: 'line',
     data: {
-      datasets: dataSets
+      datasets: graphData
+      .map((entryObj, i) => {
+        const color = getColor(entryObj.name)
+        return {
+          label: entryObj.name,
+          backgroundColor: color,
+          borderColor: color,
+          fill: true,
+          data: entryObj.values.map((entry) => {
+            return {x:entry.date, y:entry.user_growth}
+          })
+        }
+  })
     },
     options: {
       plugins: {
@@ -114,9 +121,38 @@ function renderData(rawData) {
       }
     }
   });
-  chart.update();
+  } else {
+    _chart.data.datasets = graphData
+      .map((entryObj, i) => {
+        const color = '#' + Math.floor(Math.random()*16777215).toString(16)
+        return {
+          label: entryObj.name,
+          // backgroundColor: 'rgb(255, 99, 132)',
+          backgroundColor: color,
+          borderColor: color,
+          fill: true,
+          data: entryObj.values.map((entry) => {
+            return {x:entry.date, y:entry.user_growth}
+          })
+        }
+
+      })
+  }
+  _chart.update();
 }
 
+
+function readTextFile(file, callback) {
+  var rawFile = new XMLHttpRequest();
+  rawFile.overrideMimeType("application/json");
+  rawFile.open("GET", file, true);
+  rawFile.onreadystatechange = function() {
+    if (rawFile.readyState === 4 && rawFile.status == "200") {
+      callback(rawFile.responseText);
+    }
+  }
+  rawFile.send(null);
+}
 
 document.addEventListener("DOMContentLoaded", function(){
   main();
